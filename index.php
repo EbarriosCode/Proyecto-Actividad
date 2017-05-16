@@ -1,3 +1,8 @@
+<?php if(isset($_GET['registrado'])){
+        $registrado = $_GET['registrado']; 
+        //print_r($registrado); 
+      }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +18,18 @@
   	<link rel="stylesheet" href="Views/css/estilos.css">
   	<link rel="stylesheet" href="Views/css/style.css">
   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            
+    <style>
+        .not-allowed{cursor:not-allowed;}
+        
+        #alerta-roja{display: none;}
+        #alerta-verde{display: none;}
+         <?php if($registrado == 'false'){?>
+                    #alerta-roja{display: inherit;}
+        
+         <?php }else {?>
+                    #alerta-verde{display: inherit;}
+         <?php } ?>
+    </style>
 </head>
 <body id="top" class="scrollspy">
 
@@ -62,41 +78,57 @@
     </div>
 </div>
 
-
   <!-- Modal Structure Registro -->
   <div id="modalRegistro" class="modal modal-fixed-footer">  	 	  	
     <div class="modal-content">
     	<h4 class="center-align">Registro</h4>	
-    	
-	    <form action="Controllers/Registro.php" method="POST">
-	    	<div class="input-field">
-		      	<input type="text" id="nombres" name="nombres" required>
-		      	<label for="nombres"><i class="material-icons">person_pin</i> Nombres</label>
-		    </div>
+    	<div class="row">
+  	    <form action="Controllers/RegistroEstudiantes.php" method="POST">
+  	    	<div class="input-field col s10">
+  		      	<input type="text" id="nombres" name="nombres" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
+  		      	<label for="nombres"><i class="material-icons">person_pin</i> Nombres</label>
+  		    </div>
+          <div class="col s2">
+            <img id="imgNombre">
+          </div>
 
-	      	<div class="input-field">
-	      		<input type="text" id="apellidos" name="apellidos" required>
-	      		<label for="apellidos"><i class="material-icons">person_pin</i> Apellidos</label>
-	      	</div>
+  	      	<div class="input-field col s10">
+  	      		<input type="text" id="apellidos" name="apellidos" required>
+  	      		<label for="apellidos"><i class="material-icons">person_pin</i> Apellidos</label>
+  	      	</div>
+            <div class="col s2">
+              <img id="imgApellido">
+            </div>
 
-	      	<div class="input-field">
-	      		<input type="text" id="correo" name="correo" required>
-	      		<label for="correo"><i class="material-icons">email</i> Correo Electrónico</label>
-	      	</div>
+  	      	<div class="input-field col s10">
+  	      		<input type="text" id="correo" name="correo" required>
+  	      		<label for="correo"><i class="material-icons">email</i> Correo Electrónico</label>
+  	      	</div>
+            <div class="col s2">
+              <img id="imgCorreo">
+            </div>
 
-	      	<div class="input-field">
-	      		<input type="text" id="telefono" name="telefono" required>
-	      		<label for="telefono"><i class="material-icons">settings_cell</i> Teléfono</label>
-	      	</div>
+  	      	<div class="input-field col s10">
+  	      		<input type="text" id="telefono" name="telefono" data-length="8" onkeypress="return validateInput(event)" onpaste="return false" required>
+  	      		<label for="telefono"><i class="material-icons">settings_cell</i> Teléfono</label>
+  	      	</div>
+            <div class="col s2">
+              <img id="imgTelefono">
+            </div>
 
-	      	<div class="input-field">
-	      		<input type="text" id="establecimiento" name="establecimiento" required>
-	      		<label for="establecimiento"><i class="material-icons">store</i> Establecimiento</label>
-	      	</div>
+  	      	<div class="input-field col s10">
+  	      		<input type="text" id="establecimiento" name="establecimiento" required>
+  	      		<label for="establecimiento"><i class="material-icons">store</i> Establecimiento</label>
+  	      	</div>
+            <div class="col s2">
+              <img id="imgEstablecimiento">
+            </div>
+        </div>
+          <input type="hidden" id="ipNavegador" name="ipNavegador">
     </div>
     <div class="modal-footer">
 	      <a class="modal-action modal-close waves-effect waves-blue btn-flat ">Cancelar</a>
-	      <button type="submit" class="waves-effect waves-blue btn-flat ">Registrar</button>
+	      <button type="submit" class="waves-effect waves-blue btn-flat" name="btn-registrar" id="btn-registrar">Registrar</button>
     </div>	
     </form>
       
@@ -129,6 +161,22 @@
 <div id="intro" class="section scrollspy">
     <div class="container">
         <div class="row">
+
+          
+          <div class="col s12" id="alerta-roja">
+            <div class="card-panel center red">
+              <span class="white-text">Usted ya ha sido registrado anteriormente.
+              </span>
+            </div>
+          </div>
+          
+          <div class="col s12"  id="alerta-verde">
+            <div class="card-panel center green">
+              <span class="white-text">Registro realizado con éxito.
+              </span>
+            </div>
+          </div>            
+
             <div  class="col s12">
                 <h2 class="center header text_h2"> <span class="span_h2"> Ingeniería en Sistemas UMG  </span> <br>Formación con Valores</h2>
             </div>
@@ -198,22 +246,26 @@
 
 
     
-    <!--  Scripts  
-	<script src="js/jquery-2.1.1.min.js"></script>  -->
+    <!--  Scripts  -->
+	<script src="js/jquery-2.1.1.min.js"></script>  
 	
 	<script src="Views/min/plugin-min.js"></script>
-    <script src="Views/min/custom-min.js"></script>
-    <script src="Views/js/materialize.min.js"></script>
+  <script src="Views/min/custom-min.js"></script>
+  <script src="Views/js/materialize.min.js"></script>
+  <script src="Views/js/Validaciones.js"></script>
     
 	<script>
-		$(document).ready(function(){
-			$('.modal-trigger').leanModal();
+		$(document).ready(function(){      
 
-
+			$('input #telefono').characterCounter();
+      $('.modal-trigger').leanModal();
+     
 		});
 
 		$.getJSON("https://api.ipify.org/?format=json", function(e) {
+        $("#ipNavegador").val(e.ip);
     		//alert(e.ip);
+        //ip laptop de mi trabajo 190.111.21.177
 		});
 	</script>
     </body>

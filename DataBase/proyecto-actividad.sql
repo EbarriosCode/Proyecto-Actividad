@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2017 a las 13:32:34
+-- Tiempo de generación: 18-05-2017 a las 00:55:44
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -33,18 +33,32 @@ CREATE TABLE `registroestudiantes` (
   `correo` varchar(100) NOT NULL,
   `telefono` varchar(8) NOT NULL,
   `establecimiento` varchar(100) NOT NULL,
-  `ipNavegador` varchar(30) NOT NULL,
+  `ipNavegador` varchar(50) NOT NULL,
   `fechaRegistro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `registroestudiantes`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-INSERT INTO `registroestudiantes` (`id`, `nombres`, `apellidos`, `correo`, `telefono`, `establecimiento`, `ipNavegador`, `fechaRegistro`) VALUES
-(1, 'Eduardo', 'Barrios', 'guayoswing@gmail.com', '54441004', 'Colegio Mixto Retalhuleu', '192.168.101.98', '2017-05-14'),
-(2, 'Mafer', 'Herrera', 'marifer17te@hotmail.com', '41793176', 'no estudio', '192.168.101.1', '2017-05-14'),
-(5, 'Mafer', 'Herrera', 'marifer17te@hotmail.com', '41793176', 'no estudio', '192.168.101.2', '2017-05-14');
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL,
+  `nombreUsuario` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `acceso` int(2) NOT NULL,
+  `ultimoAcceso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `password`, `acceso`, `ultimoAcceso`) VALUES
+(1, 'jecheverria', 'jecheverria', 1, '2017-05-17 20:53:13'),
+(2, 'khernandez', 'khernandez', 1, '2017-05-17 20:53:13'),
+(3, 'ebarrios', 'ebarrios', 0, '2017-05-17 21:25:33');
 
 --
 -- Índices para tablas volcadas
@@ -54,8 +68,13 @@ INSERT INTO `registroestudiantes` (`id`, `nombres`, `apellidos`, `correo`, `tele
 -- Indices de la tabla `registroestudiantes`
 --
 ALTER TABLE `registroestudiantes`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ipNavegador` (`ipNavegador`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -65,7 +84,12 @@ ALTER TABLE `registroestudiantes`
 -- AUTO_INCREMENT de la tabla `registroestudiantes`
 --
 ALTER TABLE `registroestudiantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

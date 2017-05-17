@@ -9,6 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="theme-color" content="#2196F3">
+    <link rel="shortcut icon" href="Views/images/iconoUmg.jpg" type="image/x-icon"/>
     <title>UMG</title>
 
     <!-- CSS  -->
@@ -93,7 +94,7 @@
           </div>
 
   	      	<div class="input-field col s10">
-  	      		<input type="text" id="apellidos" name="apellidos" required>
+  	      		<input type="text" id="apellidos" name="apellidos" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
   	      		<label for="apellidos"><i class="material-icons">person_pin</i> Apellidos</label>
   	      	</div>
             <div class="col s2">
@@ -101,7 +102,7 @@
             </div>
 
   	      	<div class="input-field col s10">
-  	      		<input type="text" id="correo" name="correo" required>
+  	      		<input type="text" id="correo" name="correo" onkeypress="return validateInputEmail(event)" onpaste="return false" required>
   	      		<label for="correo"><i class="material-icons">email</i> Correo Electrónico</label>
   	      	</div>
             <div class="col s2">
@@ -117,7 +118,7 @@
             </div>
 
   	      	<div class="input-field col s10">
-  	      		<input type="text" id="establecimiento" name="establecimiento" required>
+  	      		<input type="text" id="establecimiento" name="establecimiento" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
   	      		<label for="establecimiento"><i class="material-icons">store</i> Establecimiento</label>
   	      	</div>
             <div class="col s2">
@@ -128,7 +129,7 @@
     </div>
     <div class="modal-footer">
 	      <a class="modal-action modal-close waves-effect waves-blue btn-flat ">Cancelar</a>
-	      <button type="submit" class="waves-effect waves-blue btn-flat" name="btn-registrar" id="btn-registrar">Registrar</button>
+	      <button type="submit" class="waves-effect btn blue" name="btn-registrar" id="btn-registrar">Registrar</button>
     </div>	
     </form>
       
@@ -141,18 +142,18 @@
       
       <form action="Controllers/Login.php" method="POST">
         <div class="input-field">
-            <input type="text" id="Usuario" name="Usuario" required>
-            <label for="Usuario"><i class="material-icons">person_pin</i> Usuario</label>
+            <input type="text" id="usuario" name="usuario" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
+            <label for="usuario"><i class="material-icons">person_pin</i> Usuario</label>
         </div>
 
           <div class="input-field">
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
             <label for="password"><i class="material-icons">lock_open</i> Contraseña</label>
           </div>          
     </div>
     <div class="modal-footer">
-        <a class="modal-action modal-close waves-effect waves-blue btn-flat ">Cancelar</a>
-        <button type="submit" class="waves-effect waves-blue btn-flat ">Entrar</button>
+        <a class="modal-action modal-close waves-effect btn-flat ">Cancelar</a>
+        <button type="submit" class="waves-effect btn blue">Entrar</button>
     </div>  
     </form>
   </div>
@@ -211,43 +212,24 @@
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        <div class="col  s12">
+          <h5 class="white-text">lorem ipsum</h5>
+          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos obcaecati necessitatibus nihil harum perspiciatis 
+            id cupiditate ducimus voluptate rem aliquid aperiam, soluta blanditiis, eligendi minus dignissimos quidem, placeat sint est.</p>
 
 
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
+        
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      <a class="orange-text text-lighten-3" target="_blank" href="https://umg.edu.gt">&copy; UMG - Ingeniería en Sistemas de Información 2017</a>
       </div>
     </div>
   </footer>
-
-
-    
-    <!--  Scripts  -->
-	<script src="js/jquery-2.1.1.min.js"></script>  
+  
+    <!--  Scripts 
+	<script src="js/jquery-2.1.1.min.js"></script>   -->
 	
 	<script src="Views/min/plugin-min.js"></script>
   <script src="Views/min/custom-min.js"></script>

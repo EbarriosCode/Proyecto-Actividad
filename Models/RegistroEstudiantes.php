@@ -25,9 +25,35 @@
 			}
 			$stmt->close();
 		}
+
+		public function listarEstudiantes($inicio=false, $no_registros=false)
+		{
+			if($inicio!==false && $no_registros!==false)
+			{
+				$sql = "SELECT nombres,apellidos,correo,telefono,establecimiento,fechaRegistro FROM registroestudiantes
+					    ORDER BY fechaRegistro DESC LIMIT $inicio,$no_registros";
+			}
+			else{
+				$sql = "SELECT nombres,apellidos,correo,telefono,establecimiento,fechaRegistro FROM registroestudiantes
+					    ORDER BY fechaRegistro DESC";
+			}
+
+			$stmt = Conexion::Conectar()->prepare($sql);
+			$stmt->execute();
+
+			return $stmt->fetchAll();
+			$stmt->close();
+		}
+
+		public function numRegistros()
+		{
+			$sql = "SELECT id FROM registroestudiantes";
+			$resultado = Conexion::Conectar()->prepare($sql);
+			$resultado->execute();
+			return $resultado->fetchAll();			 
+		}
 	}
 
 	//$r = new Estudiante();
-	//print_r($r->RegistrarEstudiante('Eduardo','Barrios','guayoswing@gmail.com','54441004','Colegio Mixto Retalhuleu','192.168.101.1'));
-	//print_r($r->RegistrarEstudiante('Mafer','Herrera','marifer17te@hotmail.com','41793176','no estudio','192.168.101.2'));
+	//print_r($r->listarEstudiantes());
  ?>

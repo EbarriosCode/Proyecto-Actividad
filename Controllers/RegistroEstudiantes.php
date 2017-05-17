@@ -5,11 +5,11 @@
 
 	if(isset($_POST['btn-registrar']))
 	{
-		$nombres = $_POST['nombres'];
-		$apellidos = $_POST['apellidos'];
-		$correo = $_POST['correo'];
-		$telefono = $_POST['telefono'];
-		$establecimiento = $_POST['establecimiento'];
+		$nombres = htmlentities(addslashes($_POST['nombres']));
+		$apellidos = htmlentities(addslashes($_POST['apellidos']));
+		$correo = htmlentities(addslashes($_POST['correo']));
+		$telefono = htmlentities(addslashes($_POST['telefono']));
+		$establecimiento = htmlentities(addslashes($_POST['establecimiento']));
 		$ipNavegador = $_POST['ipNavegador'];
 
 		$registrado = $model->RegistrarEstudiante($nombres,$apellidos,$correo,$telefono,$establecimiento,$ipNavegador);

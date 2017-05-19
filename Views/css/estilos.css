@@ -1,13 +1,8 @@
- body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  div.form_error{
+    font-size: 15px;
+    font-family: sans-serif;
+    color:#FF0000;
   }
-
-  footer {
-    flex: 1 0 auto;
-  }
-
 
  /* label color */
    .input-field label {

@@ -1,3 +1,4 @@
+
 // funcion para validar que solo ingresen numeros en el telefono
 function validateInput(e)
 {
@@ -26,8 +27,8 @@ function validateInputCharacter(e)
 {
     key = e.keyCode || e.which;
     teclado = String.fromCharCode(key);
-    caracteres = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ´áéíóúÁÉÍÓÚ0123456789";
-    especiales = "8-37-38-46-164";
+    caracteres = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ´áéíóúÁÉÍÓÚ ";
+    especiales = "8-37-38-32-46-164";
     teclado_especial = false;
         for(var i in especiales)
         {
@@ -80,6 +81,8 @@ function validateInputEmail(e)
 
 
  $(document).ready(function(){ 
+
+ /*
         //validacion nombres
         $("#imgNombre").css('margin-top','30px');
         $("#imgApellido").css('margin-top','30px');
@@ -192,5 +195,5 @@ function validateInputEmail(e)
                 $("#btn-registrar").attr('disabled',false);
                 $("#btn-registrar").css("cursor","default");  
             }
-        });
+        });  */
     });

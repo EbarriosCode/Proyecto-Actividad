@@ -22,7 +22,7 @@
 
 		public function autenticar($usuario)
 		{
-			$sql = "SELECT idUsuario,acceso FROM usuarios WHERE nombreUsuario = '$usuario'";
+			$sql = "SELECT idUsuario,acceso FROM usuarios WHERE nombreUsuario = '$usuario';";
 			$resultado = Conexion::Conectar()->prepare($sql);
 
 			$resultado->execute();

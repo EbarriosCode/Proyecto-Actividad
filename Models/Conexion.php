@@ -3,12 +3,13 @@
 	class Conexion
 	{
 		public function Conectar(){
-			
-			/*$db_servidor = "mysql.hostinger.es";
-			$db_usuario  = "u789574939_root";
-			$db_password = "rootAnalisis";
-			$db_nombre   = "u789574939_sis";  */
+			/*
+			$db_servidor = "localhost";
+			$db_usuario  = "id1709738_root";
+			$db_password = "guayobarrios";
+			$db_nombre   = "id1709738_proyectoactividad";   */
 
+			
 			$db_servidor = "localhost";
 			$db_usuario  = "root";
 			$db_password = "";

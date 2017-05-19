@@ -12,12 +12,14 @@
     <link rel="shortcut icon" href="Views/images/iconoUmg.jpg" type="image/x-icon"/>
     <title>UMG</title>
 
-    <!-- CSS  -->
+    <!-- CSS  
+
     <link href="Views/min/plugin-min.css" type="text/css" rel="stylesheet">
-    <link href="Views/min/custom-min.css" type="text/css" rel="stylesheet" >
+    <link href="Views/min/custom-min.css" type="text/css" rel="stylesheet" > -->
   	<link rel="stylesheet" type="text/css" href="Views/css/materialize.min.css">
+    <link rel="stylesheet" href="Views/css/style.css">
   	<link rel="stylesheet" href="Views/css/estilos.css">
-  	<link rel="stylesheet" href="Views/css/style.css">
+  	
   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .not-allowed{cursor:not-allowed;}
@@ -72,7 +74,7 @@
                 <b class="is-visible">UMG</b>
                 <b>Formando</b>
                 <b>Profesionales</b>
-				<b>con</b>
+				        <b>con</b>
                 <b>Valores</b>
             </span>
         </h1>
@@ -80,55 +82,56 @@
 </div>
 
   <!-- Modal Structure Registro -->
-  <div id="modalRegistro" class="modal modal-fixed-footer">  	 	  	
+  <div id="modalRegistro" class="modal">  	 	  	
     <div class="modal-content">
     	<h4 class="center-align">Registro</h4>	
-    	<div class="row">
-  	    <form action="Controllers/RegistroEstudiantes.php" method="POST">
-  	    	<div class="input-field col s10">
+    	
+  	    <form action="Controllers/RegistroEstudiantes.php" method="POST" id="form-registro">
+  	    	<div class="input-field">
   		      	<input type="text" id="nombres" name="nombres" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
   		      	<label for="nombres"><i class="material-icons">person_pin</i> Nombres</label>
   		    </div>
-          <div class="col s2">
-            <img id="imgNombre">
+          <div class="error_form">
+            <span></span>
+            <!--<img id="imgNombre">-->
           </div>
 
-  	      	<div class="input-field col s10">
+  	      	<div class="input-field">
   	      		<input type="text" id="apellidos" name="apellidos" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
   	      		<label for="apellidos"><i class="material-icons">person_pin</i> Apellidos</label>
   	      	</div>
-            <div class="col s2">
+            <div class="">
               <img id="imgApellido">
             </div>
 
-  	      	<div class="input-field col s10">
-  	      		<input type="text" id="correo" name="correo" onkeypress="return validateInputEmail(event)" onpaste="return false" required>
+  	      	<div class="input-field">
+  	      		<input type="email" id="correo" name="correo" onkeypress="return validateInputEmail(event)" onpaste="return false" required>
   	      		<label for="correo"><i class="material-icons">email</i> Correo Electrónico</label>
   	      	</div>
-            <div class="col s2">
+            <div class="">
               <img id="imgCorreo">
             </div>
 
-  	      	<div class="input-field col s10">
-  	      		<input type="text" id="telefono" name="telefono" data-length="8" onkeypress="return validateInput(event)" onpaste="return false" required>
+  	      	<div class="input-field  ">
+  	      		<input type="number" id="telefono" name="telefono" minlength="8" maxlength="8" min="1" required>
   	      		<label for="telefono"><i class="material-icons">settings_cell</i> Teléfono</label>
   	      	</div>
-            <div class="col s2">
+            <div class="">
               <img id="imgTelefono">
             </div>
 
-  	      	<div class="input-field col s10">
+  	      	<div class="input-field  ">
   	      		<input type="text" id="establecimiento" name="establecimiento" onkeypress="return validateInputCharacter(event)" onpaste="return false" required>
   	      		<label for="establecimiento"><i class="material-icons">store</i> Establecimiento</label>
   	      	</div>
-            <div class="col s2">
+            <div class="">
               <img id="imgEstablecimiento">
             </div>
-        </div>
+        
           <input type="hidden" id="ipNavegador" name="ipNavegador">
     </div>
     <div class="modal-footer">
-	      <a class="modal-action modal-close waves-effect waves-blue btn-flat ">Cancelar</a>
+	      <a class="modal-action modal-close waves-effect btn-flat ">Cancelar</a>
 	      <button type="submit" class="waves-effect btn blue" name="btn-registrar" id="btn-registrar">Registrar</button>
     </div>	
     </form>
@@ -208,6 +211,7 @@
 </div>
 
 
+
 <!--Footer-->
   <footer class="page-footer orange">
     <div class="container">
@@ -229,19 +233,21 @@
   </footer>
   
     <!--  Scripts 
-	<script src="js/jquery-2.1.1.min.js"></script>   -->
+	<script src="js/jquery-2.1.1.min.js"></script>  -->
 	
 	<script src="Views/min/plugin-min.js"></script>
-  <script src="Views/min/custom-min.js"></script>
+  <script src="Views/min/custom-min.js"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+  <!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>-->
+  <script src = "Views/js/jqueryValidaciones.js"></script>
   <script src="Views/js/materialize.min.js"></script>
   <script src="Views/js/Validaciones.js"></script>
     
 	<script>
 		$(document).ready(function(){      
-
-			$('input #telefono').characterCounter();
-      $('.modal-trigger').leanModal();
-     
+      //$('.carousel').carousel();
+      $('.modal-trigger').leanModal();    
 		});
 
 		$.getJSON("https://api.ipify.org/?format=json", function(e) {
@@ -252,3 +258,4 @@
 	</script>
     </body>
 </html>
+
